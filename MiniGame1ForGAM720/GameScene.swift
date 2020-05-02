@@ -25,6 +25,13 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        let background = SKSpriteNode(imageNamed: "background.png")
+        background.position = CGPoint(x: 512, y: 384)
+        background.blendMode = .replace
+        // Put background behind other nodes
+        background.zPosition = -1
+        addChild(background)
+        
         loadLevel()
         
         }
@@ -61,6 +68,9 @@ class GameScene: SKScene {
                     node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
                     node.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
                     node.physicsBody?.isDynamic = false
+                    
+                    // fixes error
+                    addChild(node)
                     
                 } else if letter == "v" {
                     
