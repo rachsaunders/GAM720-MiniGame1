@@ -105,6 +105,10 @@ class GameScene: SKScene {
                     
                     addChild(node)
                     
+                // Fixes error
+                } else if letter == " " {
+                    // Empty space
+                    
                 } else {
                     fatalError("Couldn't read letters from file")
                 }
